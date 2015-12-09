@@ -183,19 +183,6 @@ describe('tags-input directive', function() {
             expect(isolateScope.tagList.index).toBe(-1);
         });
 
-        it('sets focus on the input field when the container div is clicked', function() {
-            // Arrange
-            compile();
-            var input = getInput()[0];
-            spyOn(input, 'focus');
-
-            // /Act
-            element.find('div').click();
-
-            // Assert
-            expect(input.focus).toHaveBeenCalled();
-        });
-
         it('does not allow duplicate tags', function() {
             // Arrange
             compile();
@@ -706,7 +693,7 @@ describe('tags-input directive', function() {
                     expect(eventData.preventDefault).toHaveBeenCalled();
                 });
 
-                it('doesn\'t split the pasted text into tags if there is just one tag (' + name + ')', function() {
+                it('split the pasted text into tags if there is just one tag (' + name + ')', function() {
                     // Arrange
                     compile('add-on-paste="true"');
                     setup('Tag1');
@@ -716,8 +703,7 @@ describe('tags-input directive', function() {
                     getInput().trigger(event);
 
                     // Assert
-                    expect($scope.tags).toEqual([]);
-                    expect(eventData.preventDefault).not.toHaveBeenCalled();
+                    expect(eventData.preventDefault).toHaveBeenCalled();
                 });
             });
         });
