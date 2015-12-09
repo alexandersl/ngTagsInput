@@ -411,7 +411,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, $window, tagsInpu
                         var data = event.getTextData();
                         var tags = data.split(options.pasteSplitPattern);
 
-                        if (tags.length > 1) {
+                        if (tags.length > 0) {
                             tags.forEach(function(tag) {
                                 tagList.addText(tag);
                             });
